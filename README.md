@@ -1,11 +1,11 @@
 # Chapter & Grain
 
-A minimalistic, editorial-style Next.js frontend for a books blog website.
+A minimalistic, editorial-style single-page Next.js frontend for a books blog website.
 
-## Pages included
+## Sections included
 
-- Home
-- Journal
+- Hero
+- Library
 - About Us
 - Contact Us
 - Terms of Use

@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header";
 
 export const metadata = {
   title: {
-    default: "Chapter & Grain",
-    template: "%s | Chapter & Grain"
+    default: "Folio",
+    template: "%s | Folio"
   },
   description:
-    "A refined books blog frontend for reviews, reading notes, and thoughtful summaries.",
+    "A dark editorial books blog for reviews, reading notes, and thoughtful summaries.",
   keywords: ["books blog", "book reviews", "summaries", "reading notes", "next.js"]
 };
 

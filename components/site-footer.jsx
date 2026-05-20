@@ -1,32 +1,31 @@
-import Link from "next/link";
+import { footerColumns } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="container site-footer-panel">
-        <div className="site-footer-inner">
-          <div className="site-footer-brand">
-            <h2>Chapter & Grain</h2>
-            <p>
-              A simple, editorial-style frontend for book blogs, summaries, and reviews with an
-              inviting, bookstore-inspired visual identity.
-            </p>
-          </div>
+      <div className="container footer-grid">
+        <div className="footer-brand">
+          <a className="brand" href="#home">
+            F<span>O</span>LIO
+          </a>
+          <p>A midnight library for reviews, summaries, essays, and beautifully slow reading.</p>
+        </div>
 
-          <nav className="footer-links" aria-label="Footer navigation">
-            <Link href="/">Home</Link>
-            <Link href="/journal">Journal</Link>
-            <Link href="/about">About Us</Link>
-            <Link href="/contact">Contact Us</Link>
-            <Link href="/terms">Terms of Use</Link>
-            <Link href="/privacy">Privacy Policy</Link>
+        {footerColumns.map((column) => (
+          <nav className="footer-column" key={column.label} aria-label={column.label}>
+            <h2>{column.label}</h2>
+            {column.links.map((link) => (
+              <a href="#home" key={link}>
+                {link}
+              </a>
+            ))}
           </nav>
-        </div>
+        ))}
+      </div>
 
-        <div className="site-footer-bar">
-          <p>Designed for calm reading, thoughtful discovery, and future publishing growth.</p>
-          <p>(c) {new Date().getFullYear()} Chapter & Grain</p>
-        </div>
+      <div className="container footer-bar">
+        <p>(c) 2024 Folio</p>
+        <p>RSS | GitHub | Twitter | Instagram</p>
       </div>
     </footer>
   );
