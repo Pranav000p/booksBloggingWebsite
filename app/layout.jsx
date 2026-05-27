@@ -1,6 +1,7 @@
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { CustomCursor } from "@/components/folio-interactions";
 
 export const metadata = {
   title: {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <CustomCursor />
         <div className="site-shell">
           <SiteHeader />
           <main>{children}</main>
@@ -25,3 +27,6 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+
+

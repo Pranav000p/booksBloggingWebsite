@@ -1,5 +1,7 @@
 import { FolioInteractions, GenreStrip, NewsletterForm } from "@/components/folio-interactions";
 import { featuredPosts, genres, stats, testimonials } from "@/lib/site-data";
+import { BookGridScroll } from "@/components/book-grid-scroll";
+
 
 function SectionTitle({ eyebrow, title }) {
   return (
@@ -69,6 +71,7 @@ export default function HomePage() {
 
       <section className="hero page-section" id="home">
         <div className="hero-image-layer">
+          <img src="/images/hero-books-ambient.jpg" alt="Midnight Library Ambient Backdrop" aria-hidden="true" />
           <BookScene />
         </div>
         <div className="hero-glow" />
@@ -106,6 +109,8 @@ export default function HomePage() {
           <span />
         </a>
       </section>
+
+      <BookGridScroll />
 
       <section className="section posts-section page-section" id="blogs">
         <div className="container">

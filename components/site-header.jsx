@@ -13,12 +13,43 @@ const navItems = [
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const handleScrollSpy = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      
+      let currentSection = "";
+      for (const [, href] of navItems) {
+        const id = href.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            currentSection = href;
+          }
+        }
+      }
+      
+      if (window.scrollY < 120) {
+        currentSection = "";
+      }
+      
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScrollSpy, { passive: true });
+    handleScrollSpy();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", handleScrollSpy);
+    };
   }, []);
 
   const closeMenu = () => setOpen(false);
@@ -32,7 +63,11 @@ export function SiteHeader() {
 
         <nav className="nav-links" aria-label="Primary navigation">
           {navItems.map(([label, href]) => (
-            <a href={href} key={label}>
+            <a 
+              href={href} 
+              key={label}
+              className={activeSection === href ? "active" : ""}
+            >
               {label}
             </a>
           ))}
@@ -61,6 +96,7 @@ export function SiteHeader() {
             href={href}
             key={label}
             onClick={closeMenu}
+            className={activeSection === href ? "active" : ""}
             style={{ "--delay": `${index * 60}ms` }}
           >
             {label}
